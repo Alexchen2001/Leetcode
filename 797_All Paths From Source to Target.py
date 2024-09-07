@@ -2,16 +2,16 @@ class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
         ans = []
 
-        def backtrack(currArr, currNode, NodePath):
+        def backtrack(currArr, currNode):
             if currNode == len(graph) - 1:
                 ans.append(currArr[:])
                 return
             
-            for node in NodePath:
+            for node in graph[currNode]:
                 currArr.append(node)
-                backtrack(currArr, node, graph[node])
+                backtrack(currArr, node)
                 currArr.pop()
             
-        backtrack([0], 0, graph[0])
+        backtrack([0], 0)
         return ans
         
